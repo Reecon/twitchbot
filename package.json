@@ -2,6 +2,14 @@
   "name": "twitchbot",
   "version": "0.0.0",
   "main": "electron/dist/main.js",
+  "build": {
+    "appId": "net.careobot.twitchbot",
+    "productName": "Twitchbot",
+    "files": [
+      "electron/dist/main.js",
+      "dist/twitchbot"
+    ]
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -9,15 +17,19 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
+    "prerelease": "npm run build -- --prod --base-href ./",
+    "release": "electron-builder --publish=never",
     "electron": "ng build --base-href ./ && tsc -p electron && electron ."
   },
   "private": true,
   "dependencies": {
     "@angular/animations": "~9.1.2",
+    "@angular/cdk": "^9.2.1",
     "@angular/common": "~9.1.2",
     "@angular/compiler": "~9.1.2",
     "@angular/core": "~9.1.2",
     "@angular/forms": "~9.1.2",
+    "@angular/material": "^9.2.1",
     "@angular/platform-browser": "~9.1.2",
     "@angular/platform-browser-dynamic": "~9.1.2",
     "@angular/router": "~9.1.2",
@@ -36,6 +48,7 @@
     "@types/node": "^12.11.1",
     "codelyzer": "^5.1.2",
     "electron": "^8.2.3",
+    "electron-builder": "^22.5.1",
     "jasmine-core": "~3.5.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~4.4.1",
